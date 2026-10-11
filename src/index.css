@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-sans: "Nunito Sans", system-ui, sans-serif;
+  --color-cream: #fbf5ea;
+  --color-sand: #f2e4cc;
+  --color-clay: #b4532a;
+  --color-brick: #8a3a1c;
+  --color-gold: #c79a3b;
+  --color-gold-light: #e3c374;
+  --color-espresso: #2a1810;
+  --color-zellige: #1e5a6e;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  background: var(--color-cream);
+  color: var(--color-espresso);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { font-family: var(--font-display); }
+
+.zellige-gold {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23c79a3b' stroke-width='1.2'%3E%3Crect x='14' y='14' width='36' height='36'/%3E%3Crect x='14' y='14' width='36' height='36' transform='rotate(45 32 32)'/%3E%3Ccircle cx='32' cy='32' r='7'/%3E%3Cpath d='M0 0L14 14M64 0L50 14M0 64L14 50M64 64L50 50'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 64px 64px;
+}
+.zellige-dark {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%232a1810' stroke-width='1.2'%3E%3Crect x='14' y='14' width='36' height='36'/%3E%3Crect x='14' y='14' width='36' height='36' transform='rotate(45 32 32)'/%3E%3Ccircle cx='32' cy='32' r='7'/%3E%3Cpath d='M0 0L14 14M64 0L50 14M0 64L14 50M64 64L50 50'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 64px 64px;
+}
+
+/* Border strip inspired by zellige tilework */
+.tile-strip {
+  height: 14px;
+  background:
+    linear-gradient(45deg, var(--color-gold) 25%, transparent 25%) 0 0 / 14px 14px,
+    linear-gradient(-45deg, var(--color-gold) 25%, transparent 25%) 0 0 / 14px 14px,
+    linear-gradient(45deg, transparent 75%, var(--color-zellige) 75%) 0 0 / 14px 14px,
+    linear-gradient(-45deg, transparent 75%, var(--color-zellige) 75%) 0 0 / 14px 14px,
+    var(--color-brick);
+}
+
+.menu-leader { flex: 1; border-bottom: 2px dotted color-mix(in srgb, var(--color-gold) 70%, transparent); transform: translateY(-5px); min-width: 1rem; }
+
+.focus-ring:focus-visible { outline: 3px solid var(--color-gold); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
